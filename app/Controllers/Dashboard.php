@@ -8,17 +8,22 @@ class Dashboard extends BaseController
 
 		$data = [];
 
-		if ($this->request->getMethod() == 'post'){
+		if ($this->request->getMethod()  == 'post'){
 			$rules = [
-			'thefile' => 'uploaded[thefile]'	
+				'theFile' => 'uploaded[theFile]',
+				'label' => 'The File'
 			];
 
 			if ($this->validate($rules)){
-				return redirect()->('/dashboard/success');
-			} else {
-				$
-			}
 
+				$file = $this->request->getFile('thefile');
+				echo $file->getName();
+				exit();
+
+				return redirect()->to('/dashboard/sucess');
+			} else {
+				$data['validation'] = $this->validator;
+			}
 		}
 
 		
